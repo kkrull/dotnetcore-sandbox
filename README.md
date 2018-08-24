@@ -1,4 +1,4 @@
-# .NET Sandbox
+# .NET Core Sandbox
 
 Move fast and break stuff.
 
