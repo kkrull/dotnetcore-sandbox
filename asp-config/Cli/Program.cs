@@ -13,7 +13,7 @@ namespace Cli
         .AddJsonFile("appsettings.json");
 
       var configuration = builder.Build();
-      Console.WriteLine($"source: {configuration["source"]}");
+      Console.WriteLine($"{configuration["source"]}");
     }
   }
 }
