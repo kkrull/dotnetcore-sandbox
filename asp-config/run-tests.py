@@ -5,11 +5,14 @@ import subprocess
 
 base_dir = os.path.dirname(os.path.realpath(__file__))
 cli_dir = os.path.join(base_dir, 'Cli')
+test_dir = os.path.join(base_dir, 'Cli.Test')
 
 
 def main():
     run_cli_from_cli()
     run_cli_from_base()
+    run_test_from_test()
+    run_test_from_base()
 
 
 def run_cli_from_cli():
@@ -22,6 +25,16 @@ def run_cli_from_base():
     with cd(base_dir):
         output = subprocess.check_output(['dotnet', 'run', '--project', 'Cli'])
         assert_equal('Cli/appsettings.json', output.strip())
+
+
+def run_test_from_test():
+    with cd(test_dir):
+        output = subprocess.check_call(['dotnet', 'test', '--no-build'])
+
+
+def run_test_from_base():
+    with cd(base_dir):
+        output = subprocess.check_call(['dotnet', 'test', '--no-build', 'Cli.Test/Cli.Test.csproj'])
 
 
 def assert_equal(expected, actual):
