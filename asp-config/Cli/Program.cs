@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using Microsoft.Extensions.Configuration;
 
 namespace Cli
 {
@@ -6,7 +8,12 @@ namespace Cli
   {
     static void Main(string[] args)
     {
-      Console.WriteLine("Hello World!");
+      var builder = new ConfigurationBuilder()
+        .SetBasePath(Directory.GetCurrentDirectory())
+        .AddJsonFile("appsettings.json");
+
+      var configuration = builder.Build();
+      Console.WriteLine($"source: {configuration["source"]}");
     }
   }
 }
