@@ -10,10 +10,5 @@ namespace Cli.Test
       var program = new Program().Configure();
       Assert.Equal("Cli.Test/appsettings.json", program.Source);
     }
-
-    [Fact(DisplayName = "it loads Razor pages from the Cli assembly directory", Skip = "pending")]
-    public void LoadPagesFromContentRoot()
-    {
-    }
   }
 }
