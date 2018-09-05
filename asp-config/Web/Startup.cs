@@ -14,7 +14,13 @@ namespace Web
 
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     {
-      //TODO KDK: Start cleaning this up
+      ConfigureExceptionPage(app, env);
+      app.UseStaticFiles();
+      app.UseMvc();
+    }
+
+    private static void ConfigureExceptionPage(IApplicationBuilder app, IHostingEnvironment env)
+    {
       if (env.IsDevelopment())
       {
         app.UseDeveloperExceptionPage();
@@ -23,9 +29,6 @@ namespace Web
       {
         app.UseExceptionHandler("/Error");
       }
-
-      app.UseStaticFiles();
-      app.UseMvc();
     }
   }
 }
