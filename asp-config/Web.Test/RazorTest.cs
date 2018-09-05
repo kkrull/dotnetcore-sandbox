@@ -15,6 +15,7 @@ namespace Web.Test
 
     public RazorTest()
     {
+      //TODO KDK: Add a route that returns a configuration value, so we can test which appsettings.json is being used
 //      var config = new ConfigurationBuilder()
 //        .AddJsonFile("appsettings.json");
 
