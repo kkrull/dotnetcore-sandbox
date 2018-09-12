@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Configuration;
 using Xunit;
 
-namespace Web.Test
+namespace Web.Test.Config
 {
   public class ConfigTest : IDisposable
   {

@@ -1,6 +1,4 @@
-using Web.Config;
-
-namespace Web.Test
+namespace Web.Config
 {
   public class StaticConfiguration : IConfigureServers
   {
