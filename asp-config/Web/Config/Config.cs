@@ -11,7 +11,7 @@ namespace Web.Config
       _config = config;
     }
 
-    [HttpGet("/config")]
+    [HttpGet("/config/source")]
     public string Index()
     {
       return _config.Source;

@@ -36,7 +36,7 @@ namespace Web.Test.Config
     [Fact(DisplayName = "it loads configuration files in the test assembly")]
     public async Task UsesTestConfiguration()
     {
-      var response = await _client.SendAsync(new HttpRequestMessage(HttpMethod.Get, "/config"));
+      var response = await _client.SendAsync(new HttpRequestMessage(HttpMethod.Get, "/config/source"));
       Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 
       var responseBody = await response.Content.ReadAsStringAsync();
