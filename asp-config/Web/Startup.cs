@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using Web.Config;
 using Web.Test;
 
@@ -10,14 +10,19 @@ namespace Web
 {
   public class Startup
   {
+    private readonly IConfiguration _config;
+
+    public Startup(IConfiguration config)
+    {
+      _config = config;
+    }
+
     public void ConfigureServices(IServiceCollection services)
     {
-      //TODO KDK: Read configuration from JSON
-      services
-        .AddMvc()
+      services.AddMvc()
         .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
       services.AddSingleton<IConfigureServers>(
-        new StaticConfiguration { Source = "Web.Test" });
+        new StaticConfiguration { Source = _config.GetValue<string>("Source") });
     }
 
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -30,13 +35,9 @@ namespace Web
     private static void ConfigureExceptionPage(IApplicationBuilder app, IHostingEnvironment env)
     {
       if (env.IsDevelopment())
-      {
         app.UseDeveloperExceptionPage();
-      }
       else
-      {
         app.UseExceptionHandler("/Error");
-      }
     }
   }
 }
