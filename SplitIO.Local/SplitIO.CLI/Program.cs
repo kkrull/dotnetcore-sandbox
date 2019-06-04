@@ -16,6 +16,15 @@ namespace SplitIO.CLI
       config.LocalhostFilePath = localhostFilePath;
       var factory = new SplitFactory("localhost", config);
       var sdk = factory.Client();
+      var splitManager = factory.Manager();
+
+      Console.WriteLine();
+      var splitNames = splitManager.SplitNames();
+      Console.WriteLine($"Splits[{splitNames.Count}]:");
+      foreach (var name in splitNames)
+      {
+        Console.WriteLine($"{name}");
+      }
     }
   }
 }
