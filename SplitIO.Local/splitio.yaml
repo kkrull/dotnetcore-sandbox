@@ -2,14 +2,7 @@
 # https://help.split.io/hc/en-us/articles/360020240172--NET-SDK#localhost-mode
 
 - my_feature:
-    treatment: "on"
-    keys: "key"
-    config: "{\"desc\" : \"this applies only to ON treatment\"}"
+    keys: "anybody"
+    treatment: "off"
 - some_other_feature:
     treatment: "off"
-- my_feature:
-    treatment: "off"
-- other_feature:
-    treatment: "off"
-    keys: ["key_1", "key_2"]
-    config: "{\"desc\" : \"this overrides multiple keys and returns off treatment for those keys\"}"

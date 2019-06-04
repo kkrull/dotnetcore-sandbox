@@ -7,24 +7,19 @@ namespace SplitIO.CLI
   {
     public static void Main(string[] args)
     {
-      Console.WriteLine($"Arguments[{args.Length}]:");
       var localhostFilePath = args[0];
-      Console.WriteLine($"- localhostFilePath: {localhostFilePath}");
+      Console.WriteLine($"localhostFilePath: {localhostFilePath}");
 
-      var config = new ConfigurationOptions();
-      config.Ready = 10000;
-      config.LocalhostFilePath = localhostFilePath;
-      var factory = new SplitFactory("localhost", config);
-      var sdk = factory.Client();
-      var splitManager = factory.Manager();
-
-      Console.WriteLine();
-      var splitNames = splitManager.SplitNames();
-      Console.WriteLine($"Splits[{splitNames.Count}]:");
-      foreach (var name in splitNames)
+      var factory = new SplitFactory("localhost", new ConfigurationOptions
       {
-        Console.WriteLine($"{name}");
-      }
+        LocalhostFilePath = localhostFilePath,
+        Ready = 10000
+      });
+      
+      var sdk = factory.Client();
+      var treatment = sdk.GetTreatment("anybody", "my_feature");
+      Console.WriteLine();
+      Console.WriteLine($"Treatment: {treatment}");
     }
   }
 }
